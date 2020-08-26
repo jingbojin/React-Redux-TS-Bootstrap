@@ -1,7 +1,7 @@
 import {
   EQuestionType,
   IApiQuestionsPayload,
-  IQuestion
+  IQuestion,
 } from '../../types/Interface';
 
 /**

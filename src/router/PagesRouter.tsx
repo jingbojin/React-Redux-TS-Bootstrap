@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { Counter } from '../views/components/counter/Counter';
+import { Counter } from '../views/pages/counter/Counter';
 import { Exam } from '../views/pages/exam/Exam';
 
 export enum ERouterUrl {
