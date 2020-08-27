@@ -12,8 +12,9 @@ import { decideQuestionVisibility } from '../../../utils/DecideQuestionVisibilit
 
 const fetchApiQuestions = async (setApiPayload: (apiPayload: IApiQuestionsPayload) => void) => {
   const apiPayload = await fetchTest();
+  // To demonstrate the lifecycle of React:
+  // await new Promise(r => setTimeout(r, 5000));
   setApiPayload(apiPayload);
-  console.log(apiPayload);
 }
 
 const loopEachQuestion = (
@@ -76,7 +77,7 @@ const handlePageNext = (
   }
 }
 
-export const Exam = React.memo((): JSX.Element | null => {
+export const Exam = React.memo((): JSX.Element => {
   const [apiPayload, setApiPayload] = useState<IApiQuestionsPayload | null>(
     null);
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
@@ -87,8 +88,14 @@ export const Exam = React.memo((): JSX.Element | null => {
   );
   
   if (apiPayload === null) {
-    // should show a spinner:
-    return null;
+    return (
+      <>
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+        <p>Loading...</p>
+      </>
+    );
   } else {
     return (
       <>

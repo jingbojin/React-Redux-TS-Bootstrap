@@ -3,6 +3,8 @@ import { EQuestionType, IQuestion } from '../../../types/Interface';
 import { Accordion, Card } from 'react-bootstrap';
 import { printQuestionLabel } from '../../../utils/PrintQuestionLabel';
 import { FreeText } from '../../components/FreeText';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
 
 interface IProps {
   singleQuestion: IQuestion;
@@ -13,7 +15,13 @@ interface IProps {
 }
 
 export const QuestionContainer = React.memo(
-  ({ singleQuestion, questionTotalCount, readonly, answer, visibleYn }: IProps): JSX.Element => {
+  ({
+     singleQuestion,
+     questionTotalCount,
+     readonly,
+     visibleYn,
+   }: IProps): JSX.Element => {
+    const answer = useSelector((state: RootState) => state.form.answers[singleQuestion.orderId]);
     return (
       <div className={visibleYn ? 'd-block' : 'd-none'}>
         <Accordion defaultActiveKey="0">
@@ -33,6 +41,7 @@ export const QuestionContainer = React.memo(
                       <FreeText
                         readonly={readonly}
                         answer={answer}
+                        questionId={singleQuestion.orderId}
                       />
                     )
                   }
