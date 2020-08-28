@@ -11,32 +11,33 @@ interface IProps {
 
 export const FreeText = React.memo(
   ({ readonly, answer, questionId }: IProps): JSX.Element => {
-    const [userInput, setUserInput] = useState<string>('');
     if (readonly) {
       return (
         <Form.Control
           as="textarea"
           rows={1}
-          readOnly={true}
+          readOnly
+          plaintext
           placeholder={answer}
         />
       );
-    } else {
-      const dispatch = useDispatch();
-      const handleChange = (e: React.BaseSyntheticEvent) => {
-        const newValue = e.currentTarget.value;
-        setUserInput(newValue);
-        dispatch(saveAnswer({
-          key: questionId, value: newValue
-        }));
-      }
-      return (
-        <Form.Control
-          as="textarea"
-          rows={1}
-          value={userInput}
-          onChange={handleChange}
-        />
-      );
     }
-  });
+    const [userInput, setUserInput] = useState<string>('');
+    const dispatch = useDispatch();
+    const handleChange = (e: React.BaseSyntheticEvent) => {
+      const newValue = e.currentTarget.value;
+      setUserInput(newValue);
+      dispatch(saveAnswer({
+        key: questionId, value: newValue
+      }));
+    }
+    return (
+      <Form.Control
+        as="textarea"
+        rows={1}
+        value={userInput}
+        onChange={handleChange}
+      />
+    );
+  }
+);

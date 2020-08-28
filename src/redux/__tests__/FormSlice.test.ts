@@ -138,4 +138,52 @@ describe('FormSlice.ts', () => {
     );
   });
   
+  it('saveAnswer should handle MultiCheckBox', () => {
+    const result0 = formSlice.reducer(initialState, {
+      type: saveAnswer.type,
+      payload: {
+        key: 28,
+        value: [],
+      }
+    });
+    expect(result0).toEqual(
+      {
+        ...initialState,
+        answers: {
+          28: [],
+        },
+      }
+    );
+    const result1 = formSlice.reducer(result0, {
+      type: saveAnswer.type,
+      payload: {
+        key: 28,
+        value: ['B', 'C'],
+      }
+    });
+    expect(result1).toEqual(
+      {
+        ...result0,
+        answers: {
+          28: ['B', 'C'],
+        },
+      }
+    );
+    
+    const result2 = formSlice.reducer(result1, {
+      type: saveAnswer.type,
+      payload: {
+        key: 28,
+        value: ['A', 'D'],
+      }
+    });
+    expect(result2).toEqual(
+      {
+        ...result1,
+        answers: {
+          28: ['A', 'D'],
+        },
+      }
+    );
+  });
 });

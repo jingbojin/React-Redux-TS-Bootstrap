@@ -33,3 +33,14 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
     vue: src/views/pages/exam/Index.vue
     react: src/views/pages/exam/Exam.tsx
 
+
+***
+## Potential improvement:
+1. Result page still needs some polish for mobile responsive view.
+2. Add user input validations.
+3. Use local Storage to support offline saving draft answers. 
+4. [Reactstrap](https://reactstrap.github.io/) seems to support more Bootstrap components out-of-box than [React-bootstrap](https://react-bootstrap.github.io/).
+
+***
+## License:
+[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)

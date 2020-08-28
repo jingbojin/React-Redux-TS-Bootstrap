@@ -25,7 +25,7 @@ export interface IApiQuestionsPayload {
 }
 
 export interface IFormItem {
-  [key: number]: string;
+  [key: number]: string | string[];
 }
 
 export const ANSWER_INPUT_EMIT_NAME = 'answerInputEmitName';

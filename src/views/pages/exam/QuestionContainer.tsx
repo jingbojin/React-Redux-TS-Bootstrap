@@ -5,12 +5,13 @@ import { printQuestionLabel } from '../../../utils/PrintQuestionLabel';
 import { FreeText } from '../../components/FreeText';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
+import { SingleChoice } from '../../components/SingleChoice';
+import { MultiCheckBox } from '../../components/MultiCheckBox';
 
 interface IProps {
   singleQuestion: IQuestion;
   questionTotalCount: number;
   readonly: boolean;
-  answer: string;
   visibleYn: boolean
 }
 
@@ -35,17 +36,33 @@ export const QuestionContainer = React.memo(
                   <p>{singleQuestion.questionText}</p>
                 </Card.Title>
                 <hr/>
-                <Card.Text>
                   {
                     (singleQuestion.type === EQuestionType.freeText) && (
                       <FreeText
                         readonly={readonly}
-                        answer={answer}
+                        answer={answer as string}
                         questionId={singleQuestion.orderId}
                       />
                     )
                   }
-                </Card.Text>
+                  {
+                    (singleQuestion.type === EQuestionType.singleSelect) && (
+                      <SingleChoice
+                        readonly={readonly}
+                        answer={answer as string}
+                        question={singleQuestion}
+                      />
+                    )
+                  }
+                {
+                  (singleQuestion.type === EQuestionType.multiCheckbox) && (
+                    <MultiCheckBox
+                      readonly={readonly}
+                      answer={answer as string[]}
+                      question={singleQuestion}
+                    />
+                  )
+                }
               </Card.Body>
             </Accordion.Collapse>
           </Card>

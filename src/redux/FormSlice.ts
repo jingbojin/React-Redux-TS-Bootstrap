@@ -5,7 +5,7 @@ import moment, { Moment } from 'moment';
 
 export interface ActionAddAnswer {
   key: number,
-  value: string,
+  value: string | string[],
 }
 
 export interface FormState {
@@ -63,3 +63,6 @@ export const saveAnswerAsync = (answer: ActionAddAnswer): AppThunk => dispatch =
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectAnswers = (state: RootState) => state.form.answers;
+
+export const selectStartedTime = (state: RootState) => state.form.startedTime;
+export const selectFinishedTime = (state: RootState) => state.form.finishedTime;

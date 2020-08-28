@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { Counter } from '../views/pages/counter/Counter';
 import { Exam } from '../views/pages/exam/Exam';
+import { Result } from '../views/pages/result/Result';
 
 export enum ERouterUrl {
   default = '/',
@@ -24,13 +25,13 @@ export default class PagesRouter extends React.Component<any, any> {
             exact
             path={ERouterUrl.exam}
           >
-            <Exam />
+            <Exam/>
           </Route>
           <Route
             exact
             path={ERouterUrl.result}
           >
-            <Counter/>
+            <Result/>
           </Route>
           <Route
             exact
