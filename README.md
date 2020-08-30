@@ -47,5 +47,9 @@ https://github.com/react-icons/react-icons#usage
 4. [Reactstrap](https://reactstrap.github.io/) seems to support more Bootstrap components out-of-box than [React-bootstrap](https://react-bootstrap.github.io/).
 
 ***
+## Deployment:
+https://github.com/mars/create-react-app-buildpack
+
+***
 ## License:
 [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
