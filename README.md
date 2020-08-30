@@ -29,10 +29,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ***
 ## Vue vs React
-1. Vue cannot use import const in the <template>, reactjs can:
-    vue: src/views/pages/exam/Index.vue
-    react: src/views/pages/exam/Exam.tsx
-
+1. Vue cannot use import const in the `<template>`, reactjs can:
+vue: src/views/pages/exam/Index.vue
+react: src/views/pages/exam/Exam.tsx
 
 ***
 ## [React Icon](https://github.com/react-icons)

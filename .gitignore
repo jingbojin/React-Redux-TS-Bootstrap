@@ -24,4 +24,4 @@ yarn-error.log*
 
 # IDE files #
 #############
-.idea/*
+/.idea/*
