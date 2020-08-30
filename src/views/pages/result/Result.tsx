@@ -1,6 +1,6 @@
 import React, {
   useEffect,
-  useState
+  useState,
 } from 'react';
 import { Button } from 'react-bootstrap';
 import {
@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 import { ERouterUrl } from '../../../router/PagesRouter';
 import {
   selectFinishedTime,
-  selectStartedTime
+  selectStartedTime,
 } from '../../../redux/FormSlice';
 import { ResultPageTitle } from './ResultPageTitle';
 import { Moment } from 'moment';
@@ -82,6 +82,7 @@ export const Result = React.memo((): JSX.Element => {
           startedTime={startedTime as Moment}
           finishedTime={finishedTime as Moment}
         />
+        <br/>
         <>
           {loopEachQuestion(
             apiPayload.questionList,

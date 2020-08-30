@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 import { store } from '../../../../redux/store';
 import App from '../App';
 
-it('renders learn react link', () => {
-  const { getByText } = render(
+it('renders Loading...', () => {
+  const { queryAllByText } = render(
     <Provider store={store}>
       <App />
     </Provider>
   );
 
-  expect(getByText('Add Amount')).toBeInTheDocument();
+  expect(queryAllByText('Loading...')).toHaveLength(2);
 });

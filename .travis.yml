@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "node"
+
+cache: npm
+
+script: npm run build
+
+jobs:
+  include:
+    - stage: Test
+
+      install: ci/install.sh
+      script: ci/run-test.sh
+      after_success: codecov --token=$CODECOV_TOKEN

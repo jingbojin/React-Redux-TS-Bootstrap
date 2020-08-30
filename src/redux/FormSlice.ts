@@ -41,10 +41,14 @@ export const formSlice = createSlice({
     saveAnswer: (state, action: PayloadAction<ActionAddAnswer>) => {
       state.answers[action.payload.key] = action.payload.value;
     },
+    
+    resetForm: state => {
+      state = initialState;
+    },
   },
 });
 
-export const { startTimer, finishTimer, saveAnswer } = formSlice.actions;
+export const { startTimer, finishTimer, saveAnswer, resetForm } = formSlice.actions;
 
 // NOTE: you can of course, control this flow by your own inside your application logic,
 // without using below.

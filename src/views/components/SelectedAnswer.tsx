@@ -1,16 +1,32 @@
 import React from 'react';
-import { IQuestion } from '../../types/Interface';
-import { Badge } from 'react-bootstrap';
+import { IOption } from '../../types/Interface';
+import { Col, Row } from 'react-bootstrap';
+import { BsCheckBox } from 'react-icons/bs';
 
 interface IProps {
   answer: string | string[];
-  question: IQuestion;
+  options: IOption[];
 }
+
 export const SelectedAnswer = React.memo(
-  ({ answer, question }: IProps): JSX.Element => {
+  ({ answer, options }: IProps): JSX.Element => {
     return (
       <>
-        Profile <Badge variant="success">&#10004;</Badge>
+        {options.map((item) => (
+          <Row>
+            <Col xs={1}>
+              {((answer && answer.includes(item.key)) || answer === item.key) &&
+              <BsCheckBox color={'green'}/>
+              }
+            </Col>
+            <Col xs={11}>
+              <p>
+                {item.value}
+              </p>
+            </Col>
+          </Row>
+        ))}
       </>
     );
-  });
+  }
+);

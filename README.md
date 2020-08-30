@@ -35,6 +35,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 
 ***
+## [React Icon](https://github.com/react-icons)
+1. Only import from the `lib`:
+https://github.com/facebook/jest/issues/2550#issuecomment-345432292
+https://github.com/react-icons/react-icons#usage
+
+***
 ## Potential improvement:
 1. Result page still needs some polish for mobile responsive view.
 2. Add user input validations.

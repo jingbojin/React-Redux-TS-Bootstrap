@@ -17,7 +17,7 @@ export const SingleChoice = React.memo(
       return (
         <SelectedAnswer
           answer={answer}
-          question={question}
+          options={question.options as IOption[]}
         />
       );
     }

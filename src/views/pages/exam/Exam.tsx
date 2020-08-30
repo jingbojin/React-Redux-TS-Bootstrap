@@ -3,9 +3,9 @@ import React, {
   FormEvent,
   SetStateAction,
   useEffect,
-  useState
+  useState,
 } from 'react';
-import { Badge, Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import {
   EXAM_FORM_CONTROL_ID,
   SUBMIT_BUTTON_TEXT,
@@ -16,15 +16,21 @@ import { fetchTest } from '../../../services/api/GetQuestions';
 import { QuestionContainer } from './QuestionContainer';
 import { decideQuestionVisibility } from '../../../utils/DecideQuestionVisibility';
 import { useDispatch } from 'react-redux';
-import { startTimer, finishTimer } from '../../../redux/FormSlice';
+import { startTimer, finishTimer, resetForm } from '../../../redux/FormSlice';
 import { useHistory } from 'react-router-dom';
 import * as H from 'history';
 import { ERouterUrl } from '../../../router/PagesRouter';
+import {
+  BsFiles,
+  BsFillCaretLeftFill,
+  BsFillCaretRightFill,
+} from 'react-icons/bs';
 
 const fetchApiQuestions = async (
   setApiPayload: (apiPayload: IApiQuestionsPayload) => void,
   dispatch: Dispatch<any>,
 ) => {
+  dispatch(resetForm());
   const apiPayload = await fetchTest();
   // To demonstrate the lifecycle of React:
   // await new Promise(r => setTimeout(r, 5000));
@@ -111,14 +117,15 @@ export const Exam = React.memo((): JSX.Element => {
   
   useEffect(() => {
       fetchApiQuestions(setApiPayload, dispatch);
-    /**
-     * https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
-     *
-     * If you want to run an effect and clean it up only once (on mount and
-     * unmount), you can pass an empty array ([]) as a second argument. This
-     * tells React that your effect doesn’t depend on any values from props or
-     * state, so it never needs to re-run.
-     */
+      /**
+       * https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
+       *
+       * If you want to run an effect and clean it up only once (on mount and
+       * unmount), you can pass an empty array ([]) as a second argument. This
+       * tells React that your effect doesn’t depend on any values from props
+       * or
+       * state, so it never needs to re-run.
+       */
     }, [dispatch]
   );
   
@@ -135,7 +142,7 @@ export const Exam = React.memo((): JSX.Element => {
     return (
       <>
         <PageTitle examName={apiPayload.testName}/>
-        <Form onSubmit={handleFormSubmit(dispatch,routerHistory)}>
+        <Form onSubmit={handleFormSubmit(dispatch, routerHistory)}>
           <Form.Group controlId={EXAM_FORM_CONTROL_ID}>
             {loopEachQuestion(
               apiPayload.questionList,
@@ -152,14 +159,12 @@ export const Exam = React.memo((): JSX.Element => {
                   onClick={handlePagePrevious(currentPageNumber,
                     setCurrentPageNumber)}
                 >
-                  Previous
+                  <BsFillCaretLeftFill/>Previous
                 </Button>
               )}
             </Col>
             <Col xs={6}>
-              <Badge variant="light">
-                {printPaginationText(apiPayload, currentPageNumber)}
-              </Badge>
+              <BsFiles/>{printPaginationText(apiPayload, currentPageNumber)}
             </Col>
             <Col xs={3}>
               {currentPageNumber < getTotalPageCount(
@@ -171,7 +176,7 @@ export const Exam = React.memo((): JSX.Element => {
                   onClick={handlePageNext(currentPageNumber,
                     setCurrentPageNumber)}
                 >
-                  Next
+                  Next<BsFillCaretRightFill/>
                 </Button>
               )}
             </Col>
@@ -184,7 +189,7 @@ export const Exam = React.memo((): JSX.Element => {
               variant="primary"
               type="submit"
               className="my-3"
-              
+            
             >
               {SUBMIT_BUTTON_TEXT}
             </Button>

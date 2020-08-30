@@ -4,8 +4,9 @@ import { formSlice } from './FormSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     form: formSlice.reducer,
+    // You can of course adding more reducer here, eg:
+    counter: counterReducer,
   },
 });
 
