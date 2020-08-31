@@ -6,10 +6,42 @@
 ![npm type definitions](https://img.shields.io/npm/types/typescript?label=TS)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+Demo site: http://exam-react.jingbojin.com
+***
+## Part of the Vue vs React experiment:
+[Vue version](https://github.com/jingbojin/exam): https://github.com/jingbojin/exam
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+***
+## Application workflow:
 
+This application simulates an online exam/survey website. 
+There are two pages:
+1. An exam page: Allow users to input/select their answers.
+2. A result page: Show users what they have submitted, with start and finish time.
+
+* Once users submitted their answers, they will be redirected to the result page.
+* In the result page, there is a `Try again` button in the end of the page, 
+so that users can retry the exam. 
+* Therefore, both page can navigate to each other. 
+
+There are 3 types of questions:
+
+| Question Type |                                    |
+| ------------- |:-----------------------------------|
+| singleSelect  | only one answer is allowed         |
+| multiCheckbox | multiple selections are permitted  |
+| freeText      | free text answer                   |
+
+The questions list can be modified in [test_data.json](public/test_data.json), 
+you can utilise [MockApiResponse](src/services/api/MockApiResponse.ts) to update/print this json file. 
+
+This json file also controls:
+* The test title
+* Pagination setting for exam page (number of questions per page)
+
+***
 ## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 In the project directory, you can run:
 
