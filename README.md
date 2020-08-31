@@ -1,3 +1,12 @@
+# A React + Redux + TypeScript + Bootstrap + Axios Project example
+[![Build Status](https://travis-ci.com/jingbojin/exam-react.svg?token=AiCM6zPJxbZCtuxqfTpu&branch=master)](https://travis-ci.com/jingbojin/exam-react)
+[![codecov](https://codecov.io/gh/jingbojin/exam-react/branch/master/graph/badge.svg)](https://codecov.io/gh/jingbojin/exam-react)
+[![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m785871154-efc1a3c517ff82c9d89d822e)](https://uptimerobot.com/dashboard#785871154)
+[![Website exam-react.jingbojin.com](https://img.shields.io/website-up-down-green-red/http/exam-react.jingbojin.com)](http://exam-react.jingbojin.com/)
+![npm type definitions](https://img.shields.io/npm/types/typescript?label=TS)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts

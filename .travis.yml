@@ -12,4 +12,4 @@ jobs:
 
       install: ci/install.sh
       script: ci/run-test.sh
-      after_success: codecov --token=$CODECOV_TOKEN
+      after_success: codecov
