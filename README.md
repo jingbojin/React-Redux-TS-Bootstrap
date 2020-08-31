@@ -8,8 +8,8 @@
 
 Demo site: http://exam-react.jingbojin.com
 ***
-## Part of the Vue vs React experiment:
-[Vue version](https://github.com/jingbojin/exam): https://github.com/jingbojin/exam
+## Part of the `Vue vs React` experiment:
+[Vue version](https://github.com/jingbojin/Vue-TS-Bootstrap): https://github.com/jingbojin/Vue-TS-Bootstrap
 
 ***
 ## Application workflow:
