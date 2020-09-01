@@ -1,5 +1,5 @@
 # A React + Redux + TypeScript + Bootstrap + Axios Project example
-[![Build Status](https://travis-ci.com/jingbojin/React-Redux-TS-Bootstrap.svg?branch=master)](https://travis-ci.com/jingbojin/React-Redux-TS-Bootstrap.svg?branch=master)
+[![Build Status](https://travis-ci.com/jingbojin/React-Redux-TS-Bootstrap.svg?branch=master)](https://travis-ci.com/jingbojin/React-Redux-TS-Bootstrap)
 [![codecov](https://codecov.io/gh/jingbojin/React-Redux-TS-Bootstrap/branch/master/graph/badge.svg)](https://codecov.io/gh/jingbojin/React-Redux-TS-Bootstrap)
 [![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m785871154-efc1a3c517ff82c9d89d822e)](https://uptimerobot.com/dashboard#785871154)
 [![Website react.jingbojin.com](https://img.shields.io/website-up-down-green-red/http/react.jingbojin.com)](http://react.jingbojin.com/)
