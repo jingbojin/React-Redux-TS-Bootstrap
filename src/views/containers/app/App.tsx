@@ -4,6 +4,7 @@ import './App.css';
 import PagesRouter from '../../../router/PagesRouter';
 import Image from 'react-bootstrap/Image';
 import { Container } from 'react-bootstrap';
+import { Footer } from '../../components/Footer';
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
       <Image src={logo} className="App-logo"/>
       <hr/>
       <PagesRouter/>
+      <hr/>
+      <Footer />
     </Container>
   );
 }
