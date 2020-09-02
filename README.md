@@ -3,7 +3,8 @@
 [![codecov](https://codecov.io/gh/jingbojin/React-Redux-TS-Bootstrap/branch/master/graph/badge.svg)](https://codecov.io/gh/jingbojin/React-Redux-TS-Bootstrap)
 [![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m785871154-efc1a3c517ff82c9d89d822e)](https://uptimerobot.com/dashboard#785871154)
 [![Website react.jingbojin.com](https://img.shields.io/website-up-down-green-red/http/react.jingbojin.com)](http://react.jingbojin.com/)
-![npm type definitions](https://img.shields.io/npm/types/typescript?label=TS)
+[![ts](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)](https://www.typescriptlang.org/)
+[![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Demo site: http://react.jingbojin.com
@@ -91,6 +92,7 @@ https://github.com/react-icons/react-icons#usage
 ***
 ## Deployment:
 https://github.com/mars/create-react-app-buildpack
+https://create-react-app.dev/docs/deployment/#step-1-add-homepage-to-packagejson
 
 ***
 ## License:

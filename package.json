@@ -1,6 +1,7 @@
 {
   "name": "react-redux-ts-bootstrap",
   "version": "0.1.0",
+  "homepage": "https://jingbojin.github.io/React-Redux-TS-Bootstrap",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
@@ -23,12 +24,15 @@
     "@types/jest": "^26.0.12",
     "@types/node": "^14.6.2",
     "@types/react": "^16.9.49",
+    "@types/react-bootstrap": "^0.32.22",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
-    "@types/react-bootstrap": "^0.32.22",
-    "@types/react-router-dom": "^5.1.5"
+    "@types/react-router-dom": "^5.1.5",
+    "gh-pages": "^3.1.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
