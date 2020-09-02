@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/React-Redux-TS-Bootstrap/static/css/main.24fc984f.chunk.css",
+    "main.js": "/React-Redux-TS-Bootstrap/static/js/main.9de1d29f.chunk.js",
+    "main.js.map": "/React-Redux-TS-Bootstrap/static/js/main.9de1d29f.chunk.js.map",
+    "runtime-main.js": "/React-Redux-TS-Bootstrap/static/js/runtime-main.d9c88487.js",
+    "runtime-main.js.map": "/React-Redux-TS-Bootstrap/static/js/runtime-main.d9c88487.js.map",
+    "static/js/2.9c713f60.chunk.js": "/React-Redux-TS-Bootstrap/static/js/2.9c713f60.chunk.js",
+    "static/js/2.9c713f60.chunk.js.map": "/React-Redux-TS-Bootstrap/static/js/2.9c713f60.chunk.js.map",
+    "index.html": "/React-Redux-TS-Bootstrap/index.html",
+    "precache-manifest.27b98821b26882e1090546b91196a10f.js": "/React-Redux-TS-Bootstrap/precache-manifest.27b98821b26882e1090546b91196a10f.js",
+    "service-worker.js": "/React-Redux-TS-Bootstrap/service-worker.js",
+    "static/css/main.24fc984f.chunk.css.map": "/React-Redux-TS-Bootstrap/static/css/main.24fc984f.chunk.css.map",
+    "static/js/2.9c713f60.chunk.js.LICENSE.txt": "/React-Redux-TS-Bootstrap/static/js/2.9c713f60.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/React-Redux-TS-Bootstrap/static/media/logo.8dad8028.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9c88487.js",
+    "static/js/2.9c713f60.chunk.js",
+    "static/css/main.24fc984f.chunk.css",
+    "static/js/main.9de1d29f.chunk.js"
+  ]
+}
