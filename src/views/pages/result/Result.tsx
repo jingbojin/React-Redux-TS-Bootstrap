@@ -6,9 +6,8 @@ import { Button } from 'react-bootstrap';
 import {
   REDIRECT_TEST_BUTTON_TEXT,
 } from '../../../config/TextProvider';
-import { IApiQuestionsPayload, IQuestion } from '../../../types/Interface';
-import { fetchTest } from '../../../services/api/GetQuestions';
-import { QuestionContainer } from '../exam/QuestionContainer';
+import { IApiQuestionsPayload } from '../../../types/Interface';
+import { loopEachQuestionReadonly } from '../exam/QuestionContainer';
 import { useSelector } from 'react-redux';
 import { ERouterUrl } from '../../../router/PagesRouter';
 import {
@@ -18,32 +17,8 @@ import {
 import { ResultPageTitle } from './ResultPageTitle';
 import { Moment } from 'moment';
 import { Link } from 'react-router-dom';
-
-const fetchApiQuestions = async (
-  setApiPayload: (apiPayload: IApiQuestionsPayload) => void,
-) => {
-  const apiPayload = await fetchTest();
-  // To demonstrate the lifecycle of React:
-  // await new Promise(r => setTimeout(r, 5000));
-  setApiPayload(apiPayload);
-}
-
-const loopEachQuestion = (
-  questions: IQuestion[],
-): JSX.Element[] => {
-  const questionTotalCount = questions.length;
-  return questions.map((q, index): JSX.Element => {
-    return (
-      <QuestionContainer
-        key={q.orderId}
-        singleQuestion={q}
-        questionTotalCount={questionTotalCount}
-        readonly
-        visibleYn
-      />
-    );
-  });
-}
+import { Loading } from '../../components/Loading';
+import { fetchApiQuestionsReadonly } from '../../../utils/FetchFrom';
 
 export const Result = React.memo((): JSX.Element => {
   const [apiPayload, setApiPayload] = useState<IApiQuestionsPayload | null>(
@@ -52,7 +27,7 @@ export const Result = React.memo((): JSX.Element => {
   const finishedTime = useSelector(selectFinishedTime);
   
   useEffect(() => {
-      fetchApiQuestions(setApiPayload);
+      fetchApiQuestionsReadonly(setApiPayload);
       /**
        * https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
        *
@@ -67,12 +42,7 @@ export const Result = React.memo((): JSX.Element => {
   
   if (apiPayload === null) {
     return (
-      <>
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-        <p>Loading...</p>
-      </>
+      <Loading />
     );
   } else {
     return (
@@ -84,7 +54,7 @@ export const Result = React.memo((): JSX.Element => {
         />
         <br/>
         <>
-          {loopEachQuestion(
+          {loopEachQuestionReadonly(
             apiPayload.questionList,
           )}
         </>

@@ -1,7 +1,4 @@
 import React, {
-  Dispatch,
-  FormEvent,
-  SetStateAction,
   useEffect,
   useState,
 } from 'react';
@@ -11,106 +8,27 @@ import {
   SUBMIT_BUTTON_TEXT,
 } from '../../../config/TextProvider';
 import { PageTitle } from './PageTitle';
-import { IApiQuestionsPayload, IQuestion } from '../../../types/Interface';
-import { fetchTest } from '../../../services/api/GetQuestions';
-import { QuestionContainer } from './QuestionContainer';
-import { decideQuestionVisibility } from '../../../utils/DecideQuestionVisibility';
+import { IApiQuestionsPayload } from '../../../types/Interface';
+import { loopEachQuestion } from './QuestionContainer';
 import { useDispatch } from 'react-redux';
-import { startTimer, finishTimer, resetForm } from '../../../redux/FormSlice';
 import { useHistory } from 'react-router-dom';
-import * as H from 'history';
-import { ERouterUrl } from '../../../router/PagesRouter';
 import {
   BsFiles,
   BsFillCaretLeftFill,
   BsFillCaretRightFill,
 } from 'react-icons/bs';
-
-const fetchApiQuestions = async (
-  setApiPayload: (apiPayload: IApiQuestionsPayload) => void,
-  dispatch: Dispatch<any>,
-) => {
-  dispatch(resetForm());
-  const apiPayload = await fetchTest();
-  // To demonstrate the lifecycle of React:
-  // await new Promise(r => setTimeout(r, 5000));
-  setApiPayload(apiPayload);
-  dispatch(startTimer());
-}
-
-const loopEachQuestion = (
-  questions: IQuestion[],
-  currentPageNumber: number,
-  numberOfQuestionsPerPage: number,
-): JSX.Element[] => {
-  const questionTotalCount = questions.length;
-  return questions.map((q, index): JSX.Element => {
-    const visibleYn = decideQuestionVisibility(
-      index,
-      currentPageNumber,
-      numberOfQuestionsPerPage,
-    );
-    return (
-      <QuestionContainer
-        key={q.orderId}
-        singleQuestion={q}
-        questionTotalCount={questionTotalCount}
-        readonly={false}
-        visibleYn={visibleYn}
-      />
-    );
-  });
-}
-
-const getTotalPageCount = (
-  questionCount: number,
-  numPerPage: number
-): number => {
-  return Math.ceil(questionCount / numPerPage);
-}
-const printPaginationText = (
-  apiPayload: IApiQuestionsPayload,
-  currentPageNumber: number
-): string => {
-  const totalPageCount = getTotalPageCount(
-    apiPayload.questionList.length,
-    apiPayload.pageControl.numPerPage,
-  );
-  return `Page ${currentPageNumber} of ${totalPageCount}`;
-}
-
-const handlePagePrevious = (
-  currentPageNumber: number,
-  setCurrentPageNumber: Dispatch<SetStateAction<number>>,
-) => {
-  return () => {
-    setCurrentPageNumber(currentPageNumber - 1);
-  }
-}
-
-const handlePageNext = (
-  currentPageNumber: number,
-  setCurrentPageNumber: Dispatch<SetStateAction<number>>,
-) => {
-  return () => {
-    setCurrentPageNumber(currentPageNumber + 1);
-  }
-}
-
-const handleFormSubmit = (
-  dispatch: Dispatch<any>,
-  routerHistory: H.History,
-) => {
-  return (evt: FormEvent) => {
-    evt.preventDefault();
-    dispatch(finishTimer());
-    routerHistory.push(ERouterUrl.result);
-  }
-}
+import {
+  getTotalPageCount,
+  handlePageNext,
+  handlePagePrevious,
+  printPaginationText,
+} from '../../../utils/exam/Pagination';
+import { handleFormSubmit } from '../../../utils/exam/Form';
+import { fetchApiQuestions } from '../../../utils/FetchFrom';
+import { Loading } from '../../components/Loading';
 
 export const Exam = React.memo((): JSX.Element => {
-  const [apiPayload, setApiPayload] = useState<IApiQuestionsPayload | null>(
-    null);
+  const [apiPayload, setApiPayload] = useState<IApiQuestionsPayload | null>(null);
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
   const dispatch = useDispatch();
   const routerHistory = useHistory();
@@ -131,12 +49,7 @@ export const Exam = React.memo((): JSX.Element => {
   
   if (apiPayload === null) {
     return (
-      <>
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-        <p>Loading...</p>
-      </>
+      <Loading />
     );
   } else {
     return (
@@ -156,8 +69,10 @@ export const Exam = React.memo((): JSX.Element => {
               {currentPageNumber > 1 && (
                 <Button
                   variant="danger"
-                  onClick={handlePagePrevious(currentPageNumber,
-                    setCurrentPageNumber)}
+                  onClick={handlePagePrevious(
+                    currentPageNumber,
+                    setCurrentPageNumber,
+                  )}
                 >
                   <BsFillCaretLeftFill/>Previous
                 </Button>
@@ -173,8 +88,8 @@ export const Exam = React.memo((): JSX.Element => {
               ) && (
                 <Button
                   variant="danger"
-                  onClick={handlePageNext(currentPageNumber,
-                    setCurrentPageNumber)}
+                  onClick={
+                    handlePageNext(currentPageNumber, setCurrentPageNumber)}
                 >
                   Next<BsFillCaretRightFill/>
                 </Button>
@@ -185,12 +100,7 @@ export const Exam = React.memo((): JSX.Element => {
             apiPayload.questionList.length,
             apiPayload.pageControl.numPerPage,
           ) && (
-            <Button
-              variant="primary"
-              type="submit"
-              className="my-3"
-            
-            >
+            <Button variant="primary" type="submit" className="my-3">
               {SUBMIT_BUTTON_TEXT}
             </Button>
           )}
