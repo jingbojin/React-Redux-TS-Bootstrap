@@ -1,8 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Redirect,
+  Route,
+  RouteComponentProps,
+  Switch
+} from 'react-router-dom';
 import { Counter } from '../views/pages/counter/Counter';
-import { Exam } from '../views/pages/exam/Exam';
 import { Result } from '../views/pages/result/Result';
+import { Exam } from '../views/pages/exam/Exam';
+// import ExamWithoutHook from '../views/pages/exam/ExamWithoutHook';
 
 export enum ERouterUrl {
   default = '/',
@@ -24,8 +31,9 @@ export default class PagesRouter extends React.Component<any, any> {
           <Route
             exact
             path={ERouterUrl.exam}
+            component={this.renderExam}
           >
-            <Exam/>
+          
           </Route>
           <Route
             exact
@@ -43,5 +51,14 @@ export default class PagesRouter extends React.Component<any, any> {
         </Switch>
       </BrowserRouter>
     )
+  }
+  
+  private renderExam = (
+    routeComponentProps: RouteComponentProps
+  ): JSX.Element => {
+    // To showcase React Class component vs Functional component:
+    // return (<ExamWithoutHook routerHistory={routeComponentProps.history}/>);
+    
+    return (<Exam />);
   }
 };
