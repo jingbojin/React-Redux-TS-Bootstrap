@@ -1,7 +1,6 @@
 {
   "name": "react-redux-ts-bootstrap",
   "version": "0.1.0",
-  "homepage": "https://jingbojin.github.io/React-Redux-TS-Bootstrap",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
