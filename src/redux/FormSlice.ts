@@ -70,3 +70,7 @@ export const selectAnswers = (state: RootState) => state.form.answers;
 
 export const selectStartedTime = (state: RootState) => state.form.startedTime;
 export const selectFinishedTime = (state: RootState) => state.form.finishedTime;
+
+export const selectAnswerById = (questionOrderId: number) => {
+  return (state: RootState) => state.form.answers[questionOrderId];
+}

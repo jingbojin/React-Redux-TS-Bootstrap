@@ -4,10 +4,10 @@ import { Accordion, Card } from 'react-bootstrap';
 import { printQuestionLabel } from '../../../utils/PrintQuestionLabel';
 import { FreeText } from '../../components/FreeText';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
 import { SingleChoice } from '../../components/SingleChoice';
 import { MultiCheckBox } from '../../components/MultiCheckBox';
 import { decideQuestionVisibility } from '../../../utils/DecideQuestionVisibility';
+import { selectAnswerById } from '../../../redux/FormSlice';
 
 interface IProps {
   singleQuestion: IQuestion;
@@ -24,7 +24,8 @@ export const QuestionContainer = React.memo(
      visibleYn,
    }: IProps): JSX.Element => {
     const answer = useSelector(
-      (state: RootState) => state.form.answers[singleQuestion.orderId]);
+      selectAnswerById(singleQuestion.orderId)
+    );
     return (
       <div className={visibleYn ? 'd-block' : 'd-none'}>
         <Accordion defaultActiveKey="0">
