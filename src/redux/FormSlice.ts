@@ -48,6 +48,7 @@ export const formSlice = createSlice({
   },
 });
 
+// Here is where you export Redux Actions:
 export const { startTimer, finishTimer, saveAnswer, resetForm } = formSlice.actions;
 
 // NOTE: you can of course, control this flow by your own inside your application logic,

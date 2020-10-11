@@ -8,6 +8,9 @@ export const store = configureStore({
     // You can of course adding more reducer here, eg:
     counter: counterReducer,
   },
+  devTools: {
+    trace: true,
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;
