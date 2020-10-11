@@ -51,6 +51,20 @@ export const formSlice = createSlice({
 // Here is where you export Redux Actions:
 export const { startTimer, finishTimer, saveAnswer, resetForm } = formSlice.actions;
 
+// The function below is called a selector and allows us to select a value from
+// the state. Selectors can also be defined inline where they're used instead of
+// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
+export const selectAnswers = (state: RootState) => state.form.answers;
+
+export const selectStartedTime = (state: RootState) => state.form.startedTime;
+export const selectFinishedTime = (state: RootState) => state.form.finishedTime;
+
+export const selectAnswerById = (questionOrderId: number) => {
+  return (state: RootState) => state.form.answers[questionOrderId];
+}
+
+
+
 // NOTE: you can of course, control this flow by your own inside your application logic,
 // without using below.
 // ******
@@ -63,15 +77,3 @@ export const saveAnswerAsync = (answer: ActionAddAnswer): AppThunk => dispatch =
     dispatch(saveAnswer(answer));
   }, 1000);
 };
-
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectAnswers = (state: RootState) => state.form.answers;
-
-export const selectStartedTime = (state: RootState) => state.form.startedTime;
-export const selectFinishedTime = (state: RootState) => state.form.finishedTime;
-
-export const selectAnswerById = (questionOrderId: number) => {
-  return (state: RootState) => state.form.answers[questionOrderId];
-}

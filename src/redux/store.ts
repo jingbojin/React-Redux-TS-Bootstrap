@@ -8,6 +8,10 @@ export const store = configureStore({
     // You can of course adding more reducer here, eg:
     counter: counterReducer,
   },
+  
+  
+  // This only concerns Chrome extension: Redux dev tool:
+  // https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
   devTools: {
     trace: true,
   }
